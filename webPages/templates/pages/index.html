@@ -1,0 +1,27 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+{% load static %}
+    <div>
+        <header class='main-header'>
+            <div class="imagen-header">
+                <img class="object-fit-cover" src="{% static 'images/header.webp' %}" alt="cupcakes">
+            </div>
+            <div class='header-overlay'>
+                <img src="{% static 'images/cake_vertical.svg' %}" alt="">
+            </div>
+        </header>
+        <section class='categorias flex justify-content-center pb-5'>
+            <h2 class='text-center py-5'>Productos Destacados</h2>
+
+            <div class='container py-5'>
+                <div class='row gap-3 flex justify-content-center'>
+                    {% for torta in public_tortas %}
+                        {% include "components/product-card.html" %}
+                    {% endfor %}
+                </div>    
+            </div>
+   
+        </section>
+    </div>
+{% endblock content %}
+

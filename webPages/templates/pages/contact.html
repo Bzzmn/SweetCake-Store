@@ -1,0 +1,65 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<div class="form-container">
+
+  <form class='contact-form py-5' action="/contact/" method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+   
+    <div class="mb-3">
+      {{ form.customer_email.errors }}
+      <label for="{{ form.customer_email.id_for_label }}" class="form-label">Correo electronico</label>
+         {{ form.customer_email }}
+    
+      <div id="emailHelp" class="form-text">Nunca compartiremos tu correo con nadie.</div>
+    </div>
+
+    <div class="mb-3">
+      {{ form.customer_name.errors }}
+      <label for="{{ form.customer_name.id_for_label }}" class="form-label">Nombre</label>
+      {{ form.customer_name }}
+  
+    </div>
+
+    <div class="mb-3">
+      {{ form.message.errors }}
+      <label for="{{ form.message.id_for_label }}" class="form-label">Mensaje</label>
+      {{ form.message }}
+  
+    </div>
+ 
+    <button type="submit" class="btn btn-primary" value="Submit">Enviar</button>
+  </form>
+
+</div>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+

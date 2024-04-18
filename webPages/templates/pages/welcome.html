@@ -1,0 +1,41 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+    <!-- Encabezado de la página -->
+    <div class='container py-5'>
+        <div class='row gap-3 flex justify-content-center'>
+            {% for torta in private_tortas %}
+                {% include "components/product-card.html" %}
+            {% endfor %}
+        </div>    
+    </div>
+
+    <!-- Sección principal -->
+    <div>
+        <header>
+            <h1>¡Explora el dulce corazón de nuestra comunidad!</h1>
+        </header>
+        <!-- Introducción -->
+        <section>
+            <p>¡Hola y bienvenidos a Sweet Cake! Estamos emocionados de compartir con ustedes nuestra pasión por los postres deliciosos y accesibles para todos. Aquí, cada receta es una celebración de los sabores que unen a las personas.</p>
+        </section>
+
+        <!-- Nuestros productos -->
+        <section>
+            <h2>Celebra la Diversidad de Sabores</h2>
+            <p>En OnlyFlans, cada día es una oportunidad para disfrutar de algo especial. Desde las tortas esponjosas y suaves hasta los kuchens repletos de frutas frescas y pasteles que son pura tentación, tenemos algo para cada paladar.</p>
+            <p>Y porque sabemos que la salud es tan importante como el sabor, te ofrecemos opciones veganas, sin gluten y sin azúcar, cada una elaborada con el mismo amor y dedicación.</p>
+        </section>
+<!-- Compromiso de calidad -->
+        <section>
+            <h2>Nuestra Promesa: Calidad y Creatividad</h2>
+            <p>Nos comprometemos a utilizar solo los ingredientes más frescos y de la más alta calidad, apoyando a los productores locales siempre que es posible. Nuestros chefs, verdaderos magos de la repostería, están siempre innovando para traerte los postres más deliciosos y creativos, garantizando que cada visita a OnlyFlans sea una nueva aventura gastronómica.</p>
+        </section>
+
+        <!-- Invitación a visitar -->
+        <section>
+            <h2>Un Lugar para Todos</h2>
+            <p>Creemos que un gran postre puede hacer que el día de cualquiera sea un poco más especial. Es por eso que nos esforzamos en crear un ambiente acogedor y amigable, donde todos se sientan bienvenidos y parte de nuestra familia OnlyFlans.</p>
+            <p>Te invitamos a navegar por nuestro sitio, conocer más sobre nuestra historia, explorar nuestro menú, y por supuesto, a visitarnos para probar por ti mismo por qué en OnlyFlans, cada bocado es una obra de arte. Estamos aquí para hacerte sonreír, un postre a la vez.</p>
+        </section>
+    </div>
+{% endblock content %}

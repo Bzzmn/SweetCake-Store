@@ -1,0 +1,8 @@
+asgiref==3.8.1
+Django==4.2
+pyparsing==3.1.2
+python-dotenv==1.0.1
+scss==0.8.73
+sqlparse==0.4.4
+typing_extensions==4.11.0
+tzdata==2024.1

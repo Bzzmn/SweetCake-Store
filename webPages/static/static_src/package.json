@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "compile:css": "node-sass -o ../styles sass", 
+    "compile:css:watch": "node-sass -o ../styles sass --watch"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "node-sass": "^9.0.0"
+  }
+}
