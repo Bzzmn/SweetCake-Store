@@ -1,6 +1,23 @@
 {% extends "layouts/base.html" %}
 {% block content %}
 {% load static %}
+
+{% if messages %}
+    <ul class="messages">
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+                {% for message in messages %}
+                    Swal.fire({
+                        title: '{{ message.tags|capfirst }}!',  // Usamos `tags` para el título si es 'success', 'error', etc.
+                        text: '{{ message }}',
+                        icon: '{{ message.tags }}',  // `tags` en Django puede ser 'success', 'error', 'warning', etc.
+                        confirmButtonText: 'Ok'
+                    });
+                {% endfor %}
+            });
+        </script>
+{% endif %}
+
     <div>
         <header class='main-header'>
             <div class="imagen-header">
@@ -20,8 +37,40 @@
                     {% endfor %}
                 </div>    
             </div>
-   
         </section>
+
+        <section>
+            <h2>Productos Destacados Dinamicos</h2>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                  
+                        {% if featured_tortas %}
+                            {% for torta in featured_tortas %}
+                            <div class="swiper-slide">
+                                <div class='row gap-3 flex justify-content-center'>
+                                {% include "components/product-card.html" %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>No hay productos destacados.</p>
+                        {% endif %}
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+        </section>
+
+        <section>
+            <h2>Contenido Dinamico</h2>
+            <p>La pasteleria tiene estos registros:</p>
+            <ul>
+            <li><strong>Tortas:</strong> {{ num_tortas }}</li>
+            <li><strong>Tortas Exclusivas Clientes Logueados:</strong> {{ tortas_exclusivas }}</li>
+            </ul>
+
+            <p>Has visitado esta pagina {{ num_visits }}{% if num_visits == 1 %} vez.{% else %} veces.{% endif %}.</p> 
+        </section>
+
     </div>
 {% endblock content %}
 

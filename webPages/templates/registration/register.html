@@ -1,0 +1,48 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+  <div class="register">
+    <form method="post" action="" class='pt-5'>
+      {% csrf_token %}
+  <h1>Registrarse</h1>
+        {% for field in form %}
+          {{ field.errors }}
+        {% endfor %}
+      <table>
+        <tr>
+          <td>{{ form.username.label_tag }}</td>
+          <td>{{ form.username }}</td>
+          <td>{{ form.username.help_text }}</td>
+        </tr>
+        <tr>
+          <td>{{ form.email.label_tag }}</td>
+          <td>{{ form.email }}</td>
+          <td>{{ form.email.help_text }}</td>
+        </tr>
+        <tr>
+          <td>{{ form.password1.label_tag }}</td>
+          <td>{{ form.password1 }}</td>
+          <td>{{ form.password1.help_text }}</td>
+        </tr>
+        <tr>
+          <td>{{ form.password2.label_tag }}</td>
+          <td>{{ form.password2 }}</td>
+          <td>{{ form.password2.help_text }}</td>
+        </tr>
+      </table>
+      <a href="{% url "index" %}">Ir al home</a> | <a href="{% url "login" %}">Iniciar sesion</a>
+      <input type="submit" value="registrar">
+    </form>
+  </div>
+{% endblock %}

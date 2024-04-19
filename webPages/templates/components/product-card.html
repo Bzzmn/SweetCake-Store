@@ -2,6 +2,7 @@
   <img src="{{ torta.image_url }}" class="card-img-top" alt="{{ torta.name }}">
   <div class="card-body">
   <h5 class="card-title">{{ torta.name }}</h5>
-  <p class="card-text">{{ torta.description }}</p>
+  <p class="card-text">${{ torta.price }}</p>
   </div>
+  <a href="{% url 'producto' slug=torta.slug %}" class="btn btn-primary">Ver Producto</a>
 </div>

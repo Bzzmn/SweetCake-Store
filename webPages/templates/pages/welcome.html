@@ -1,5 +1,21 @@
 {% extends "layouts/base.html" %}
 {% block content %}
+
+{% if messages %}
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            {% for message in messages %}
+                Swal.fire({
+                    title: '{{ message.tags|capfirst }}!',  // Usamos `tags` para el título si es 'success', 'error', etc.
+                    text: '{{ message }}',
+                    icon: '{{ message.tags }}',  // `tags` en Django puede ser 'success', 'error', 'warning', etc.
+                    confirmButtonText: 'Ok'
+                });
+            {% endfor %}
+        });
+    </script>
+{% endif %}
+
     <!-- Encabezado de la página -->
     <div class='container py-5'>
         <div class='row gap-3 flex justify-content-center'>

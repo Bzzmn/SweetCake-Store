@@ -6,33 +6,37 @@ from django.dispatch import receiver
 
 # Create your models here.
 
-#MODELO TORTA
-
-class Torta(models.Model):
-    torta_uuid = models.UUIDField()
+#MODELO ABSTRACTO PRODUCTOS 
+class Product(models.Model):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=64)
     description = models.TextField()
+    price = models.PositiveIntegerField(default=0)
     image_url = models.URLField()
-    slug = models.SlugField(max_length=100, blank=True)
-    is_private = models.BooleanField()
+    slug = models.SlugField()
+    is_private = models.BooleanField(default=False)
+    visit_count = models.PositiveIntegerField(default=0)
+    is_featured = models.BooleanField(default=False)
 
-    def save(self,*args, **kwargs ):
-      if not self.slug:
-        self.slug = slugify(self.name)
-      super(Torta, self).save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
-    def __str__(self):
-        return self.name
+    class Meta:
+        abstract = True
 
-@receiver(pre_save, sender=Torta)
-def add_uuid(sender, instance, **kwargs):
-    if not instance.torta_uuid:
-        instance.torta_uuid = uuid.uuid4()
+#MODELO TORTA
+class Torta(Product):
+    # Campos específicos de tortas si los hay
+    pass
 
-#FIN MODELO TORTA
+#MODELO CUPCAKE
+class Cupcake(Product):
+    # Campos específicos de cupcakes si los hay
+    pass
 
 # MODELO CONTACT FORM
-
 class ContactForm(models.Model):
     contact_form_uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     customer_email = models.EmailField()
