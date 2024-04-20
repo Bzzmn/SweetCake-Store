@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if os.getenv('DEBUG')=='True' else False
+DEBUG = os.getenv('DEBUG', 'False').lower() == 'true' 
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = os.getenv('ALOWED_HOSTS').split(' ')
 
 
 # Application definition
@@ -78,14 +78,17 @@ WSGI_APPLICATION = 'onlyflans.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
-DATABASES['default'] = dj_database_url.parse('postgres://sweetcake_django_render_user:s4Z6V3fxLJ4KAB6qol0LGfwolhpH1EuO@dpg-cohtmr5jm4es739f2qdg-a.oregon-postgres.render.com/sweetcake_django_render')
+database_url = os.getenv('DATABASE_URL') 
+if database_url:
+    DATABASES['default'] = dj_database_url.parse(database_url)
+else: 
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
