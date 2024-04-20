@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import dj_database_url
 
 load_dotenv ()
 SECRET_KEY = os.getenv('SECRET_KEY')
@@ -83,6 +84,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+DATABASES['default'] = dj_database_url.parse('postgres://sweetcake_django_render_user:s4Z6V3fxLJ4KAB6qol0LGfwolhpH1EuO@dpg-cohtmr5jm4es739f2qdg-a.oregon-postgres.render.com/sweetcake_django_render')
 
 
 # Password validation

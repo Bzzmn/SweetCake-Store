@@ -19,7 +19,10 @@
     <!-- Encabezado de la página -->
     <div class='container py-5'>
         <div class='row gap-3 flex justify-content-center'>
-            {% for torta in private_tortas %}
+            {% for product in private_tortas %}
+                {% include "components/product-card.html" %}
+            {% endfor %}
+            {% for product in private_cupcakes %}
                 {% include "components/product-card.html" %}
             {% endfor %}
         </div>    

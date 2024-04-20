@@ -1,0 +1,48 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+{% load static %}
+<div>
+  {% if messages %}
+    <ul class="messages">
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+                {% for message in messages %}
+                    Swal.fire({
+                        title: '{{ message.tags|capfirst }}!',
+                        text: '{{ message }}',
+                        icon: '{{ message.tags }}',
+                        confirmButtonText: 'Ok'
+                    });
+                {% endfor %}
+            });
+        </script>
+    </ul>
+  {% endif %}
+
+  {% if public_products %}
+  <header class='category-header'>
+    <div class="imagen-header">
+        <img class="object-fit-cover" src="{% static 'images/header.webp' %}" alt="{{ product_type }}">
+    </div>
+    <div class='header-overlay'>
+        <img src="{% static 'images/cake_vertical.svg' %}" alt="">
+    </div>
+  </header>
+
+  <section class='categorias flex justify-content-center pb-5'>
+    <h2 class='text-center py-5'>{{ product_type }} Destacados</h2>
+
+    <div class='container py-5'>
+        <div class='row gap-3 flex justify-content-center'>
+            {% for product in public_products %}
+                {% include "components/product-card.html" %}
+            {% endfor %}
+        </div>    
+    </div>
+  </section>
+
+  {% endif %}
+    <!-- Otras secciones -->
+</div>
+{% endblock %}

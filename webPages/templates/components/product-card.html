@@ -1,8 +1,8 @@
 <div class="card col-4" style="width: 18rem;">
-  <img src="{{ torta.image_url }}" class="card-img-top" alt="{{ torta.name }}">
+  <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}">
   <div class="card-body">
-  <h5 class="card-title">{{ torta.name }}</h5>
-  <p class="card-text">${{ torta.price }}</p>
+  <h5 class="card-title">{{ product.name }}</h5>
+  <p class="card-text">${{ product.price }}</p>
   </div>
-  <a href="{% url 'producto' slug=torta.slug %}" class="btn btn-primary">Ver Producto</a>
+  <a href="{{ product.get_absolute_url }}" class="btn btn-primary">Ver Producto</a>
 </div>

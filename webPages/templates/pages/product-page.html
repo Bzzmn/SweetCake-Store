@@ -8,12 +8,14 @@
     <div class="card mb-3" style="max-width: 540px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="{{ torta.image_url }}" class="img-fluid rounded-start" alt="...">
+          <img src="{{ producto.image_url }}" class="img-fluid rounded-start" alt="...">
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">{{ torta.name }}</h5>
-            <p class="card-text">{{ torta.description }}</p>
+            <h5 class="card-title">{{ producto.name }}</h5>
+            <p class="card-text">{{ producto.price }}</p>
+            <p class="card-text">{{ producto.description }}</p>
+            
             <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
           </div>
         </div>
@@ -21,7 +23,7 @@
     </div>
     <div>
       <section>
-        <p>Has visitado esta pagina {{ torta.visit_count }}{% if torta.visit_count == 1 %} vez{% else %} veces{% endif %}.</p> 
+        <p>Has visitado esta pagina {{ producto.visit_count }}{% if producto.visit_count == 1 %} vez{% else %} veces{% endif %}.</p> 
     </section>
     </div>
 

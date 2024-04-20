@@ -32,7 +32,7 @@
 
             <div class='container py-5'>
                 <div class='row gap-3 flex justify-content-center'>
-                    {% for torta in public_tortas %}
+                    {% for product in public_tortas %}
                         {% include "components/product-card.html" %}
                     {% endfor %}
                 </div>    
@@ -44,17 +44,22 @@
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                   
-                        {% if featured_tortas %}
-                            {% for torta in featured_tortas %}
+                  
+                            {% for product in featured_tortas %}
                             <div class="swiper-slide">
                                 <div class='row gap-3 flex justify-content-center'>
                                 {% include "components/product-card.html" %}
                                 </div>
                             </div>
                             {% endfor %}
-                        {% else %}
-                            <p>No hay productos destacados.</p>
-                        {% endif %}
+                            {% for product in featured_cupcakes %}
+                            <div class="swiper-slide">
+                                <div class='row gap-3 flex justify-content-center'>
+                                {% include "components/product-card.html" %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                      
                 </div>
                 <div class="swiper-pagination"></div>
               </div>
@@ -65,10 +70,12 @@
             <p>La pasteleria tiene estos registros:</p>
             <ul>
             <li><strong>Tortas:</strong> {{ num_tortas }}</li>
-            <li><strong>Tortas Exclusivas Clientes Logueados:</strong> {{ tortas_exclusivas }}</li>
+            <li><strong>Tortas Exclusivas Clientes Logueados:</strong> {{ tortas_exclusive }}</li>
+            <li><strong>Cupcakes:</strong> {{ num_cupcakes }}</li>
+            <li><strong>Cupcakes Exclusivas Clientes Logueados:</strong> {{ cupcakes_exclusive }}</li>
             </ul>
 
-            <p>Has visitado esta pagina {{ num_visits }}{% if num_visits == 1 %} vez.{% else %} veces.{% endif %}.</p> 
+            <p>Has visitado esta pagina {{ num_visits }}{% if num_visits == 1 %} vez{% else %} veces{% endif %}.</p> 
         </section>
 
     </div>
