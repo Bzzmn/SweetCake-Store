@@ -20,49 +20,51 @@
 
     <div>
         <header class='main-header'>
+            <div class='header-overlay'>
+                <div class='header-title'> 
+                    <h1 class='main-title'>Cada Preparación,<br> Una Obra de Arte</h1>
+                    <div class='header-buttons'>
+                        <a class='btn header-btn' href= "{% url 'tortas' %}">Tortas</a>  |  
+                        <a class='btn header-btn' href="{% url 'cupcakes' %}">Cupcakes</a>
+                    </div>
+                </div>  
+            </div>
             <div class="imagen-header">
                 <img class="object-fit-cover" src="{% static 'images/header.webp' %}" alt="cupcakes">
             </div>
-            <div class='header-overlay'>
-                <img src="{% static 'images/cake_vertical.svg' %}" alt="">
-            </div>
-        </header>
-        <section class='categorias flex justify-content-center pb-5'>
-            <h2 class='text-center py-5'>Productos Destacados</h2>
 
-            <div class='container py-5'>
-                <div class='row gap-3 flex justify-content-center'>
-                    {% for product in public_tortas %}
-                        {% include "components/product-card.html" %}
-                    {% endfor %}
-                </div>    
+        </header>
+        <section class='welcome-section'>
+            <div>
+                <h2>Descubre el Placer de lo Auténtico</h2>
+                <p>Bienvenido a Sweet Cake, donde cada preparación es una celebración de sabor y dulzura. Nuestra pasión por la repostería crea tortas y cupcakes que deleitan tus sentidos.<br><br>Cada detalle, desde los ingredientes selectos hasta las recetas innovadoras, está diseñado para ofrecerte una experiencia inolvidable.</p>
             </div>
         </section>
 
-        <section>
-            <h2>Productos Destacados Dinamicos</h2>
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                  
-                  
-                            {% for product in featured_tortas %}
-                            <div class="swiper-slide">
-                                <div class='row gap-3 flex justify-content-center'>
-                                {% include "components/product-card.html" %}
-                                </div>
-                            </div>
-                            {% endfor %}
-                            {% for product in featured_cupcakes %}
-                            <div class="swiper-slide">
-                                <div class='row gap-3 flex justify-content-center'>
-                                {% include "components/product-card.html" %}
-                                </div>
-                            </div>
-                            {% endfor %}
-                      
+        <section class='featured-products'>
+            <h2>Delicias Destacadas</h2>
+
+            <section class='categorias flex justify-content-center pb-5'>
+            
+                <div class='container py-5'>
+                    <div class='row row-featured gap-3 flex justify-content-center'>
+                        {% for product in featured_tortas %}
+                            {% include "components/product-card.html" %}
+                        {% endfor %}
+                        {% for product in featured_cupcakes %}
+                            {% include "components/product-card.html" %}
+                        {% endfor %}
+                    </div>    
                 </div>
-                <div class="swiper-pagination"></div>
-              </div>
+              </section>
+
+
+
+
+
+
+
+
         </section>
 
         <section>
@@ -78,6 +80,19 @@
             <p>Has visitado esta pagina {{ num_visits }}{% if num_visits == 1 %} vez{% else %} veces{% endif %}.</p> 
         </section>
 
+
+
     </div>
+
+    <script type="text/javascript">
+        var swiper = new Swiper(".mySwiper", {
+          slidesPerView: 3,
+          spaceBetween: 30,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+        });
+      </script>
 {% endblock content %}
 

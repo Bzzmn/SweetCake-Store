@@ -5,7 +5,7 @@ from .forms import ContactFormForm, CustomUserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
+from django.urls import reverse
 
 # Create your views here.
 
@@ -87,8 +87,22 @@ def productPage(request, product_type, slug):
     product = get_object_or_404(model, slug=slug)
     product.visit_count += 1
     product.save()
+
+    category_url = reverse(f'{product_type}s')  
+    product_url = reverse('cupcake_detalle' if product_type == 'cupcake' else 'torta_detalle', args=[slug])
+
+    breadcrumb = [
+        {'title': 'Inicio', 'url': reverse('index')},
+        {'title': product_type.capitalize() + 's', 'url': category_url},
+        {'title': product.name, 'url': product_url}
+    ]
+
+    context = {
+        'producto': product,
+        'breadcrumb': breadcrumb
+    }
     
-    return render(request, 'pages/product-page.html', {'producto': product})
+    return render(request, 'pages/product-page.html', context)
 
 
 def cupcakesPage(request):
@@ -105,7 +119,7 @@ def cupcakesPage(request):
         'num_products': num_products,
         'exclusive_products': exclusive_products,
         'num_visits': num_visits,
-        'product_type': 'cupcake'
+        'product_type': 'cupcake',
     }
     return render(request, 'pages/category-page.html', context)
 

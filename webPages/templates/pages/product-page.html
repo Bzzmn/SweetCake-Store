@@ -1,30 +1,50 @@
 {% extends 'layouts/base.html' %}
+{% load custom_filters %}
+{% load static %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Pagina de Producto{% endblock %}
 
 {% block content %}
-    <h1>Pagina de producto</h1>
 
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="{{ producto.image_url }}" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{{ producto.name }}</h5>
-            <p class="card-text">{{ producto.price }}</p>
-            <p class="card-text">{{ producto.description }}</p>
-            
-            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+<div class="product-page-frame">
+  <div class="container">
+    <div>
+      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          {% for crumb in breadcrumb %}
+              {% if forloop.last %}
+                  <li class="breadcrumb-item active" aria-current="page">{{ crumb.title }}</li>
+              {% else %}
+                  <li class="breadcrumb-item"><a href="{{ crumb.url }}">{{ crumb.title }}</a></li>
+              {% endif %}
+          {% endfor %}
+      </ol>
+      </nav>
+      <div class="card card-product mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{ producto.image_url }}" class=" img-fluid rounded-start producto-img" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ producto.name | title }}</h5>
+              <p class="card-text price">$ {{ producto.price | intdot }}</p>
+              <p class="card-text">{{ producto.description | lower }}</p>
+            </div>
           </div>
         </div>
+    
+    
       </div>
-    </div>
-    <div>
+    
       <section>
         <p>Has visitado esta pagina {{ producto.visit_count }}{% if producto.visit_count == 1 %} vez{% else %} veces{% endif %}.</p> 
-    </section>
+      </section>
+
     </div>
+    
+  </div>
+
+</div>
 
 {% endblock %}

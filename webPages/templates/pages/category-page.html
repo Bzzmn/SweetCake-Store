@@ -22,16 +22,27 @@
 
   {% if public_products %}
   <header class='category-header'>
-    <div class="imagen-header">
-        <img class="object-fit-cover" src="{% static 'images/header.webp' %}" alt="{{ product_type }}">
-    </div>
     <div class='header-overlay'>
-        <img src="{% static 'images/cake_vertical.svg' %}" alt="">
+        <div class="container">
+            <h1 class='text-center category-text py-5'>
+                {% if product_type == "torta" %}
+                    Tortas Sweet Cake: Una Celebración de Sabores
+                {% elif product_type == "cupcake" %}
+                    Cupcakes Sweet Cake: Pequeños Placeres Dulces
+                {% else %}
+                    {{ product_type|capfirst }} de Sweet Cake
+                {% endif %}
+            </h1>
+        </div>
     </div>
+    <div class="category-header-image-container">
+        <img class="category-header-image" src="{% static 'images/header.webp' %}" alt="{{ product_type }}">
+    </div>
+
   </header>
 
   <section class='categorias flex justify-content-center pb-5'>
-    <h2 class='text-center py-5'>{{ product_type }} Destacados</h2>
+
 
     <div class='container py-5'>
         <div class='row gap-3 flex justify-content-center'>

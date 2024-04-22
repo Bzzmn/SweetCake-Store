@@ -1,8 +1,10 @@
-<div class="card col-4" style="width: 18rem;">
+{% load custom_filters %}
+
+<div class="card  product-card col-4" style="width: 18rem;">
   <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}">
   <div class="card-body">
-  <h5 class="card-title">{{ product.name }}</h5>
-  <p class="card-text">${{ product.price }}</p>
+  <h5 class="card-title">{{ product.name | title}}</h5>
+  <p class="card-text price">${{ product.price | intdot }}</p>
   </div>
   <a href="{{ product.get_absolute_url }}" class="btn btn-primary">Ver Producto</a>
 </div>
