@@ -12,37 +12,39 @@
     </ul>
 {% endif %}
 
-<div class="form-container">
+<div class='contact-page-container'>
 
-  <form class='contact-form py-5' action="/contact/" method="post">
-    {% csrf_token %}
-    {{ form.non_field_errors }}
-   
-    <div class="mb-3">
-      {{ form.customer_email.errors }}
-      <label for="{{ form.customer_email.id_for_label }}" class="form-label">Correo electronico</label>
-         {{ form.customer_email }}
+  <div class="form-container">
+
+    <form class='contact-form py-5' action="/contact/" method="post">
+      {% csrf_token %}
+      <h5>Contáctanos</h5>
+      {{ form.non_field_errors }}
+     
+      <div class="mb-3">
+        {{ form.customer_email.errors }}
+        <label for="{{ form.customer_email.id_for_label }}" class="form-label">correo electronico</label>
+           {{ form.customer_email }}
+      
+        <div id="emailHelp" class="form-text">nunca compartiremos tu correo con nadie.</div>
+      </div>
+  
+      <div class="mb-3">
+        {{ form.customer_name.errors }}
+        <label for="{{ form.customer_name.id_for_label }}" class="form-label">nombre</label>
+        {{ form.customer_name }}
     
-      <div id="emailHelp" class="form-text">Nunca compartiremos tu correo con nadie.</div>
-    </div>
-
-    <div class="mb-3">
-      {{ form.customer_name.errors }}
-      <label for="{{ form.customer_name.id_for_label }}" class="form-label">Nombre</label>
-      {{ form.customer_name }}
+      </div>
   
-    </div>
-
-    <div class="mb-3">
-      {{ form.message.errors }}
-      <label for="{{ form.message.id_for_label }}" class="form-label">Mensaje</label>
-      {{ form.message }}
-  
-    </div>
- 
-    <button type="submit" class="btn btn-primary" value="Submit">Enviar</button>
-  </form>
-
+      <div class="mb-3">
+        {{ form.message.errors }}
+        <label for="{{ form.message.id_for_label }}" class="form-label">mensaje</label>
+        {{ form.message }}
+    
+      </div>
+      <button type="submit" class="btn btn-contact-form btn-primary" value="Submit">enviar</button>
+    </form>
+  </div>
 </div>
 
 {% endblock content %}

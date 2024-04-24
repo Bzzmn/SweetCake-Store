@@ -2,6 +2,7 @@ from django.urls import path, include
 from . import views
 
 
+
 urlpatterns = [
     path('', views.index, name='index'),
     path('about/', views.about, name='about'),
@@ -14,3 +15,4 @@ urlpatterns = [
     path('tortas/', views.tortasPage, name='tortas'),
 ]
 
+print("Testing direct print on server startup")

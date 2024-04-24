@@ -56,7 +56,7 @@
           </li>
           {% else %} 
             <li class="nav-item ps-5">
-              <a class="nav-link" href="{% url "welcome" %}">Hola, {{ user.username }}</a>
+              <a class="nav-link" href="{% url "welcome" %}">Hola, {{ user.username | capfirst }}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link btn" href="{% url "logout" %}">Cerrar sesion</a>

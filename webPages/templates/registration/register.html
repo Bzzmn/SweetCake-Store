@@ -1,4 +1,5 @@
 {% extends "layouts/base.html" %}
+{% load widget_tweaks %}
 
 {% block content %}
 
@@ -12,37 +13,46 @@
     </ul>
 {% endif %}
 
-  <div class="register">
-    <form method="post" action="" class='pt-5'>
+<div class='contact-page-container'>
+
+  <div class="form-container">
+    <form class='contact-form custom-login py-5' action="" method="post">
+      <h5>Registrarse</h5>
       {% csrf_token %}
-  <h1>Registrarse</h1>
-        {% for field in form %}
-          {{ field.errors }}
-        {% endfor %}
-      <table>
-        <tr>
-          <td>{{ form.username.label_tag }}</td>
-          <td>{{ form.username }}</td>
-          <td>{{ form.username.help_text }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.email.label_tag }}</td>
-          <td>{{ form.email }}</td>
-          <td>{{ form.email.help_text }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.password1.label_tag }}</td>
-          <td>{{ form.password1 }}</td>
-          <td>{{ form.password1.help_text }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.password2.label_tag }}</td>
-          <td>{{ form.password2 }}</td>
-          <td>{{ form.password2.help_text }}</td>
-        </tr>
-      </table>
-      <a href="{% url "index" %}">Ir al home</a> | <a href="{% url "login" %}">Iniciar sesion</a>
-      <input type="submit" value="registrar">
+
+      {{ form.non_field_errors }}
+    
+      <div class="mb-3">
+        {{ form.username.errors }}
+        <label for="{{ form.username.id_for_label }}" class="form-label">nombre de usuario:</label>
+        {{ form.username | add_class:"form-control input-custom" }}
+      </div>
+
+      <div class="mb-3">
+        {{ form.email.errors }}
+        <label for="{{ form.email.id_for_label }}" class="form-label">email:</label>
+        {{ form.email | add_class:"form-control input-custom" }}
+      </div>
+  
+      <div class="mb-3">
+        {{ form.password.errors }}
+        <label for="{{ form.password1.id_for_label }}" class="form-label">contraseña:</label>
+        {{ form.password1 | add_class:"form-control input-custom" }}
+      </div>
+
+      <div class="mb-3">
+        {{ form.password2.errors }}
+        <label for="{{ form.password2.id_for_label }}" class="form-label">repite la contraseña:</label>
+        {{ form.password2 | add_class:"form-control input-custom" }}
+      </div>
+      <input class='btn btn-contact-form btn-primary' type="submit" value="registrar">
+       <p>
+        <a href="{% url "index" %}">ir al home</a> | <a href="{% url "login" %}">iniciar sesion</a>
+       </p>
     </form>
   </div>
+</div>
+
+
+  
 {% endblock %}

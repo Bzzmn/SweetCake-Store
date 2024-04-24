@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.contrib.auth.forms import AuthenticationForm
+
 
 # Create your views here.
 
@@ -46,7 +48,13 @@ def about (request):
 @login_required
 def welcome (request):
     private_tortas = Torta.objects.filter(is_private=True)
-    return render(request, 'pages/welcome.html', {'private_tortas':private_tortas})
+    private_cupcakes = Cupcake.objects.filter(is_private=True)
+
+    context = {
+        'private_tortas':private_tortas,
+        'private_cupcakes':private_cupcakes,
+    }
+    return render(request, 'pages/welcome.html', context)
 
 def contact (request):
     if request.method == 'POST':
@@ -54,7 +62,6 @@ def contact (request):
         form = ContactFormForm(request.POST)
         if form.is_valid():
             contact_form = ContactForm.objects.create(**form.cleaned_data)
-            # return render(request, 'pages/modal-exito.html')
             messages.success(request, 'Tu mensaje fue enviado')
             return redirect(to='index')
 
@@ -140,6 +147,20 @@ def tortasPage(request):
         'product_type': 'torta'
     }
     return render(request, 'pages/category-page.html', context)
+
+def loginForm(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = authenticate(username = form.cleaned_data['username'], password = form.cleaned_data['password1'])
+            login(request, user)
+            pass
+    else:
+        form = AuthenticationForm()
+        form.fields['username'].widget.attrs.update({'class': 'form-control', 'style': 'background-color: #FFF;'})
+        form.fields['password'].widget.attrs.update({'class': 'form-control', 'style': 'background-color: #FFF;'})
+
+    return render(request, 'login.html', {'form': form})
 
 
 
