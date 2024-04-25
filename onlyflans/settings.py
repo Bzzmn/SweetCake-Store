@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'webPages',
     'storages',
     'widget_tweaks',
+    'django_ses',
 ]
 
 MIDDLEWARE = [
@@ -58,14 +59,8 @@ MIDDLEWARE = [
 
 if DEBUG:
     MIDDLEWARE.append('webPages.middleware.NoCacheMiddleware')
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-else:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = 'smtp.mailgun.org'
-    EMAIL_PORT = 587
-    EMAIL_USE_TLS = True
-    EMAIL_HOST_USER = os.getenv('MAIL_HOST_USER')
-    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+    
+
 
 
 ROOT_URLCONF = 'onlyflans.urls'
@@ -159,6 +154,35 @@ if USE_S3:
     AWS_LOCATION = 'static'
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+USE_SES = os.getenv('USE_SES', 'False').lower() == 'true'
+
+if USE_SES:
+    
+    # EMAIL_HOST = 'email-smtp.eu-west-3.amazonaws.com'
+    # EMAIL_PORT = 587
+    # EMAIL_USE_TLS = True
+    # EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+    # EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+    # DEFAULT_FROM_EMAIL = 'bzzmn@proton.me'
+
+    EMAIL_BACKEND = 'django_ses.SESBackend'
+    AWS_ACCESS_KEY_ID = os.getenv('EMAIL_HOST_USER')
+    AWS_SECRET_ACCESS_KEY = os.getenv('EMAIL_HOST_PASSWORD')
+    AWS_SES_REGION_NAME = 'eu-west-3'
+    AWS_SES_REGION_ENDPOINT = 'email-smtp.eu-west-3.amazonaws.com'
+
+    DEFAULT_FROM_EMAIL = 'bzzmn@proton.me'
+    # SERVER_EMAIL = 'bzzmn@proton.me'
+
+
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    
+
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

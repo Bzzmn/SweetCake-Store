@@ -14,5 +14,3 @@ urlpatterns = [
     path('cupcakes/', views.cupcakesPage, name='cupcakes'),
     path('tortas/', views.tortasPage, name='tortas'),
 ]
-
-print("Testing direct print on server startup")
