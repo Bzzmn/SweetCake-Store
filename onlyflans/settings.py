@@ -167,10 +167,11 @@ if USE_SES:
     # DEFAULT_FROM_EMAIL = 'bzzmn@proton.me'
 
     EMAIL_BACKEND = 'django_ses.SESBackend'
-    AWS_ACCESS_KEY_ID = os.getenv('EMAIL_HOST_USER')
-    AWS_SECRET_ACCESS_KEY = os.getenv('EMAIL_HOST_PASSWORD')
-    AWS_SES_REGION_NAME = 'eu-west-3'
-    AWS_SES_REGION_ENDPOINT = 'email-smtp.eu-west-3.amazonaws.com'
+    AWS_SES_ACCESS_KEY_ID = os.getenv('EMAIL_HOST_USER')
+    AWS_SES_SECRET_ACCESS_KEY = os.getenv('EMAIL_HOST_PASSWORD')
+    AWS_SES_REGION_NAME = 'sa-east-1'
+    AWS_SES_REGION_ENDPOINT = 'email.sa-east-1.amazonaws.com'
+    # USE_SES_V2 = True
 
     DEFAULT_FROM_EMAIL = 'bzzmn@proton.me'
     # SERVER_EMAIL = 'bzzmn@proton.me'
@@ -178,7 +179,8 @@ if USE_SES:
 
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    
+
+DEFAULT_FROM_EMAIL = 'bzzmn@proton.me'    
 
 
 
