@@ -11,6 +11,7 @@ colorama==0.4.6
 cookiecutter==2.6.0
 dj-database-url==2.1.0
 Django==4.2
+django-ses==4.0.0
 django-storages==1.14.2
 django-widget-tweaks==1.5.0
 gunicorn==22.0.0
@@ -26,6 +27,7 @@ Pygments==2.17.2
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 python-slugify==8.0.4
+pytz==2024.1
 PyYAML==6.0.1
 requests==2.31.0
 rich==13.7.1
