@@ -173,18 +173,11 @@ if USE_SES:
     AWS_SES_REGION_ENDPOINT = 'email.sa-east-1.amazonaws.com'
     # USE_SES_V2 = True
 
-    DEFAULT_FROM_EMAIL = 'bzzmn@proton.me'
-    # SERVER_EMAIL = 'bzzmn@proton.me'
-
-
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DEFAULT_FROM_EMAIL = 'bzzmn@proton.me'    
-
-
-
-
+# SERVER_EMAIL = 'bzzmn@proton.me'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

@@ -36,7 +36,13 @@
         </div>
     </div>
     <div class="category-header-image-container">
-        <img class="category-header-image" src="{% static 'images/header.webp' %}" alt="{{ product_type }}">
+        <img class="category-header-image" src="
+        {% if product_type == "torta" %}
+            {% static 'images/header2.webp' %}
+        {% else %}
+            {% static 'images/header.webp' %}
+        {% endif %}
+        " alt="{{ product_type }}">
     </div>
 
   </header>

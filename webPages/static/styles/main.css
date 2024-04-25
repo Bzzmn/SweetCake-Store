@@ -9130,9 +9130,6 @@ textarea.form-control-lg {
   :root p {
     font-family: "Nunito Sans", sans-serif;
     color: var(--bs-chocolate); }
-  @media (max-width: 767.98px) {
-    :root {
-      font-size: 1.2rem; } }
 
 html, body {
   height: 100%;
@@ -9245,7 +9242,7 @@ html, body {
 
 h1.main-title, .main-title.h1 {
   color: #dfdfdf;
-  font-size: 2.4rem;
+  font-size: 3rem;
   padding-left: 14px; }
 
 .header-buttons {
@@ -9455,3 +9452,9 @@ input:-webkit-autofill:active {
   max-width: 700px;
   text-align: center;
   padding: 20px; }
+
+.password-changed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; }
