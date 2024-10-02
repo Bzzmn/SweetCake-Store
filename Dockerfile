@@ -6,7 +6,11 @@ RUN apt-get update && apt-get install -y \
     gcc \
     libpq-dev \
     python3-dev \
+    nginx \
     && rm -rf /var/lib/apt/lists/*
+
+# Copia el archivo de configuración de Nginx
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Set work directory
 WORKDIR /app
@@ -18,8 +22,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project
 COPY . .
 
+# Recoger archivos estáticos
+RUN python manage.py collectstatic --noinput
+
 # Expose port
-EXPOSE 8888
+EXPOSE 80 8888
 
 # Set environment variables
 ENV DJANGO_SETTINGS_MODULE=sweetcake.settings
@@ -27,6 +34,5 @@ ENV PYTHONUNBUFFERED=1
 ENV DJANGO_DEBUG=False
 ENV USE_SES=False
 
-RUN python manage.py collectstatic --noinput
-# Run migrations and start server
-CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8888"]
+# Corre las migraciones y después inicia Nginx y Django
+CMD ["sh", "-c", "python manage.py migrate && nginx && python manage.py runserver 0.0.0.0:8888"]
