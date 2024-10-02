@@ -25,7 +25,6 @@ EXPOSE 8888
 ENV DJANGO_SETTINGS_MODULE=sweetcake.settings
 ENV PYTHONUNBUFFERED=1
 ENV DJANGO_DEBUG=False
-ENV DJANGO_ALLOWED_HOSTS="localhost 127.0.0.1 [::1]"
 ENV USE_SES=False
 
 RUN python manage.py collectstatic --noinput
