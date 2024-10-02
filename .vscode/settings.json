@@ -1,5 +1,6 @@
 {
   "CodeGPT.Autocomplete.enabled": true,
   "CodeGPT.Autocomplete.suggestionDelay": 900,
-  "CodeGPT.Autocomplete.maxTokens": 300
+  "CodeGPT.Autocomplete.maxTokens": 300,
+  "CodeGPT.apiKey": "Ollama"
 }

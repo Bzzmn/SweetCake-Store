@@ -1,0 +1,152 @@
+[
+    {
+        "model": "webPages.cupcake",
+        "pk": 1,
+        "fields": {
+            "uuid": "48ee778f-96d5-492e-aaa6-6cc7a77634ae",
+            "name": "Encanto Rosado de Fresa",
+            "description": "De tono rosado suave y adornado con confites coloridos, este cupcake es un encantador regalo que fusiona lo dulce de la vainilla con una pincelada de fresas.",
+            "price": 5700,
+            "image_url": "https://general-projects-public.s3.eu-west-3.amazonaws.com/optidash-1713576153146/1.png",
+            "slug": "encanto-rosado-de-fresa",
+            "is_private": false,
+            "visit_count": 13,
+            "is_featured": true
+        }
+    },
+    {
+        "model": "webPages.cupcake",
+        "pk": 2,
+        "fields": {
+            "uuid": "7e264246-3d7f-4eb4-abf2-dcaae3d1d6db",
+            "name": "Tentación de Arándano",
+            "description": "Con un glaseado azul celeste y detalles en tonos rosados, este cupcake es una maravillosa mezcla de sabores, evocando la dulzura de los arándanos silvestres en cada mordida.",
+            "price": 7500,
+            "image_url": "https://general-projects-public.s3.eu-west-3.amazonaws.com/optidash-1713576153146/2.png",
+            "slug": "tentacion-de-arandano",
+            "is_private": false,
+            "visit_count": 21,
+            "is_featured": true
+        }
+    },
+    {
+        "model": "webPages.cupcake",
+        "pk": 3,
+        "fields": {
+            "uuid": "d5056694-a62e-4c54-89a6-427d460c67d3",
+            "name": "Esponjosa Dulzura de Fresa",
+            "description": "Este cupcake de encantador tono rosado y chispas chocolatosas es un deleite visual y gustativo, con fresas silvestres y biscocho de chocolate.",
+            "price": 8500,
+            "image_url": "https://general-projects-public.s3.eu-west-3.amazonaws.com/optidash-1713576153146/3.png",
+            "slug": "esponjosa-dulzura-de-fresa",
+            "is_private": false,
+            "visit_count": 6,
+            "is_featured": true
+        }
+    },
+    {
+        "model": "webPages.cupcake",
+        "pk": 4,
+        "fields": {
+            "uuid": "49e9a075-3ba5-4eaa-9d76-4d4ea801bf47",
+            "name": "Fresca Tentación de Pistacho",
+            "description": "Este vibrante cupcake de glaseado verde y detalles estrellados celebra el gusto único del pistacho, ofreciendo un equilibrio fascinante entre lo dulce y lo salado.",
+            "price": 5800,
+            "image_url": "https://general-projects-public.s3.eu-west-3.amazonaws.com/optidash-1713576153146/4.png",
+            "slug": "fresca-tentacion-de-pistacho",
+            "is_private": false,
+            "visit_count": 3,
+            "is_featured": true
+        }
+    },
+    {
+        "model": "webPages.cupcake",
+        "pk": 5,
+        "fields": {
+            "uuid": "28bb40eb-c49c-4673-a6e4-f83402b25261",
+            "name": "Aromática Tentación de Vainilla",
+            "description": "Este cupcake aromático es una obra maestra de sabor, con vainilla fragante que deleitará tu paladar y crema de frutillas silvestres.",
+            "price": 6000,
+            "image_url": "https://general-projects-public.s3.eu-west-3.amazonaws.com/optidash-1713576153146/5.png",
+            "slug": "aromatica-tentacion-de-vainilla",
+            "is_private": false,
+            "visit_count": 1,
+            "is_featured": true
+        }
+    },
+    {
+        "model": "webPages.cupcake",
+        "pk": 6,
+        "fields": {
+            "uuid": "2eb1a965-b1fe-4d42-af1e-825539a9aa36",
+            "name": "Pureza Blanca de Coco",
+            "description": "La pureza del coco se manifiesta en este cupcake, ofreciendo una experiencia tropical exquisita y refrescante.",
+            "price": 7900,
+            "image_url": "https://general-projects-public.s3.eu-west-3.amazonaws.com/optidash-1713576153146/6.png",
+            "slug": "pureza-blanca-de-coco",
+            "is_private": true,
+            "visit_count": 1,
+            "is_featured": false
+        }
+    },
+    {
+        "model": "webPages.cupcake",
+        "pk": 7,
+        "fields": {
+            "uuid": "723a86ce-06f5-4eaf-9221-1e674cb1a8f3",
+            "name": "Pasión Roja de Frambuesa",
+            "description": "Vibrante y tentador, este cupcake encarna la pasión de las frambuesas rojas, resultando en un postre irresistible.",
+            "price": 5500,
+            "image_url": "https://general-projects-public.s3.eu-west-3.amazonaws.com/optidash-1713576153146/7.png",
+            "slug": "pasion-roja-de-frambuesa",
+            "is_private": false,
+            "visit_count": 0,
+            "is_featured": false
+        }
+    },
+    {
+        "model": "webPages.cupcake",
+        "pk": 8,
+        "fields": {
+            "uuid": "31e2cfb4-68fc-4d0d-9760-f0ce5168647d",
+            "name": "Bocado Rosa Mosqueta",
+            "description": "La sofisticación se encuentra con el sabor en este cupcake, donde el glaseado de rosa mosqueta se entrelaza con notas de chocolate, creando una experiencia gustativa cautivante.",
+            "price": 6500,
+            "image_url": "https://general-projects-public.s3.eu-west-3.amazonaws.com/optidash-1713576153146/8.png",
+            "slug": "bocado-rosa-mosqueta",
+            "is_private": false,
+            "visit_count": 2,
+            "is_featured": false
+        }
+    },
+    {
+        "model": "webPages.cupcake",
+        "pk": 9,
+        "fields": {
+            "uuid": "d3674649-37db-4528-82ea-ad144031746d",
+            "name": "Esencia Marrón de Mocha",
+            "description": "La rica profundidad del mocha transforma este cupcake en una indulgencia para los verdaderos amantes del café y chocolate.",
+            "price": 7900,
+            "image_url": "https://general-projects-public.s3.eu-west-3.amazonaws.com/optidash-1713576153146/9.png",
+            "slug": "esencia-marron-de-mocha",
+            "is_private": true,
+            "visit_count": 0,
+            "is_featured": false
+        }
+    },
+    {
+        "model": "webPages.cupcake",
+        "pk": 10,
+        "fields": {
+            "uuid": "46667b49-0762-4f1f-98c4-0bec3266ac13",
+            "name": "Dulce Tentación de Chocolate",
+            "description": "Este cupcake de rica textura es una oda al chocolate, adornado con finos trozos que prometen una experiencia decadente en cada bocado.",
+            "price": 4900,
+            "image_url": "https://general-projects-public.s3.eu-west-3.amazonaws.com/optidash-1713576153146/10.png",
+            "slug": "dulce-tentacion-de-chocolate",
+            "is_private": false,
+            "visit_count": 0,
+            "is_featured": false
+        }
+    }
+]

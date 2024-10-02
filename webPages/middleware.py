@@ -4,5 +4,5 @@ class NoCacheMiddleware:
 
     def __call__(self, request):
         response = self.get_response(request)
-        response['Cache-Control'] = 'no-store'
+        response["Cache-Control"] = "no-store"
         return response
