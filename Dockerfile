@@ -19,7 +19,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose port
-EXPOSE 8000
+EXPOSE 8888
 
 # Set environment variables
 ENV DJANGO_SETTINGS_MODULE=sweetcake.settings
@@ -28,5 +28,6 @@ ENV DJANGO_DEBUG=False
 ENV DJANGO_ALLOWED_HOSTS="localhost 127.0.0.1 [::1]"
 ENV USE_SES=False
 
+RUN python manage.py collectstatic --noinput
 # Run migrations and start server
-CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8888"]

@@ -20,6 +20,6 @@ run-local:
 	@if [ $$(docker ps -a -q -f name=sweetcake) ]; then \
 	docker rm -f sweetcake; \
 	fi
-	docker run --env-file .env --name sweetcake -p127.0.0.1:8000:8000 sweetcake
+	docker run --env-file .env --name sweetcake -p127.0.0.1:8888:8888 sweetcake
 
 all: install format lint test build run
