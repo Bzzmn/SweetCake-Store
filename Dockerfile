@@ -3,9 +3,8 @@ FROM python:3.12.5-slim
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
-    gcc \
+    build-essential \
     libpq-dev \
-    python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Set work directory
@@ -22,7 +21,7 @@ COPY . .
 RUN python manage.py collectstatic --noinput
 
 # Expose port
-EXPOSE 8888
+EXPOSE 8001
 
 # Set environment variables
 ENV DJANGO_SETTINGS_MODULE=sweetcake.settings
@@ -30,5 +29,5 @@ ENV PYTHONUNBUFFERED=1
 ENV DJANGO_DEBUG=False
 ENV USE_SES=False
 
-# Run migrations and then start Django's development server
-CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8888"]
+# Run migrations and then start Gunicorn
+CMD ["sh", "-c", "python manage.py migrate && gunicorn --bind 0.0.0.0:8001 sweetcake.wsgi:application"]
