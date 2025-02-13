@@ -5,3 +5,5 @@ venv
 **node_modules
 data.json
 static_sass
+staticfiles/
+*.pyc

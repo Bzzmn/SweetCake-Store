@@ -18,14 +18,17 @@ test:
 
 build:
 	#build container
-	docker build -t sweetcake .
+	docker build \
+		--build-arg DJANGO_SECRET_KEY="$${DJANGO_SECRET_KEY}" \
+		--build-arg DATABASE_URL="$${DATABASE_URL}" \
+		-t sweetcake .
 
 run-local:
 	#run check if container exists and if so remove it then run container
 	@if [ $$(docker ps -a -q -f name=sweetcake) ]; then \
 	docker rm -f sweetcake; \
 	fi
-	docker run --env-file .env --name sweetcake -p 127.0.0.1:8001:8001 sweetcake
+	docker run --env-file .env --name sweetcake -p 127.0.0.1:8000:8000 sweetcake
 
 clean:
 	# Stop and remove containers

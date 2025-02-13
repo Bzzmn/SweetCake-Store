@@ -1,0 +1,19 @@
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 10710
+"GET /static/styles/main.css HTTP/1.1" 304 0
+"GET /static/images/cake_horizontal.svg HTTP/1.1" 304 0
+"GET /static/images/header.webp HTTP/1.1" 304 0
+"GET /static/js/popper.min.js HTTP/1.1" 304 0
+"GET /static/js/bootstrap.min.js HTTP/1.1" 304 0
+"GET /static/js/sweetalert2.all.min.js HTTP/1.1" 304 0
+"GET /static/js/rows_limiter.js HTTP/1.1" 304 0
+"GET /static/images/instagram.svg HTTP/1.1" 304 0
+"GET /static/images/twitter.svg HTTP/1.1" 304 0
+"GET /static/images/favicon.svg HTTP/1.1" 304 0
+"GET /static/js/bootstrap.min.js HTTP/1.1" 304 0
+"GET /static/js/rows_limiter.js HTTP/1.1" 304 0
+"GET /static/js/popper.min.js HTTP/1.1" 304 0
+"GET /static/js/sweetalert2.all.min.js HTTP/1.1" 304 0
+"GET /tortas/ HTTP/1.1" 200 12601
+"GET /static/images/header2.webp HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 10710
