@@ -19,7 +19,8 @@ from django.core.exceptions import ImproperlyConfigured
 load_dotenv()
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 DATABASE_URL = os.getenv("DATABASE_URL")
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS")
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost 127.0.0.1 [::1]").split()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

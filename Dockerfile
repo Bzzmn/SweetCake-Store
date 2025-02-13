@@ -25,23 +25,18 @@ ARG DJANGO_ALLOWED_HOSTS="localhost 127.0.0.1 [::1]"
 ENV PORT=${PORT}
 ENV DJANGO_ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
 ENV DJANGO_DEBUG=False
-# Use a temporary secret key just for collectstatic
-ENV DJANGO_SECRET_KEY="temporary-key-for-collectstatic-only"
-ENV DATABASE_URL="sqlite:///db.sqlite3"
-
-# Collect static files
-RUN DJANGO_SECRET_KEY="temporary-key-for-collectstatic-only" python manage.py collectstatic --noinput
-
-# Expose port
-EXPOSE ${PORT}
-
-# Set runtime environment variables
 ENV DJANGO_SETTINGS_MODULE=sweetcake.settings
 ENV PYTHONUNBUFFERED=1
 
-# Remove temporary environment variables
-ENV DJANGO_SECRET_KEY=
-ENV DATABASE_URL=
+# Collect static files with minimal environment
+RUN python manage.py collectstatic --noinput \
+    --settings=sweetcake.settings \
+    DJANGO_SECRET_KEY=dummy-key-for-build \
+    DJANGO_ALLOWED_HOSTS="localhost 127.0.0.1 [::1]" \
+    DATABASE_URL=sqlite:///db.sqlite3
+
+# Expose port
+EXPOSE ${PORT}
 
 # Run migrations and start Gunicorn
 CMD ["sh", "-c", "python manage.py migrate && gunicorn --bind 0.0.0.0:${PORT} sweetcake.wsgi:application"]
