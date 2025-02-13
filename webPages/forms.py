@@ -5,6 +5,8 @@ from django.contrib.auth.models import Group
 from django.db import transaction
 
 User = get_user_model()
+
+
 class ContactFormForm(forms.Form):
     customer_email = forms.EmailField(
         label="Correo",

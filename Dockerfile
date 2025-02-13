@@ -30,4 +30,4 @@ ENV DJANGO_DEBUG=False
 ENV USE_SES=False
 
 # Run migrations and then start Gunicorn
-CMD ["sh", "-c", "python manage.py migrate && gunicorn --bind 0.0.0.0:8001 sweetcake.wsgi:application"]
+CMD ["sh", "-c", "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 sweetcake.wsgi:application"]

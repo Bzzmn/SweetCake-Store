@@ -1,16 +1,21 @@
 install: 
 	#install commands
-	python -m pip install --upgrade pip &&\
-	python -m pip install -r requirements.txt
+	pip install hatch &&\
+	uv pip install -r pyproject.toml &&\
+	pip install pylint pylint-django
+
 format: 
 	#format code
 	python -m black *.py webPages/*.py sweetcake/*.py
+
 lint:
 	#flake8 or #pylint
 	python -m pylint --load-plugins pylint_django --django-settings-module=sweetcake.settings --disable=R,C,W1203 *.py webPages/*.py sweetcake/*.py --ignore=migrations
+
 test:
 	#test
 	python -m pytest -vv --cov=webPages
+
 build:
 	#build container
 	docker build -t sweetcake .
@@ -21,5 +26,17 @@ run-local:
 	docker rm -f sweetcake; \
 	fi
 	docker run --env-file .env --name sweetcake -p 127.0.0.1:8001:8001 sweetcake
+
+clean:
+	# Stop and remove containers
+	@if [ $$(docker ps -a -q -f name=sweetcake) ]; then \
+		docker rm -f sweetcake; \
+	fi
+	# Remove images
+	@if [ $$(docker images -q sweetcake) ]; then \
+		docker rmi -f sweetcake; \
+	fi
+	# Remove unused images and cache
+	docker system prune -f
 
 all: install format lint test build run

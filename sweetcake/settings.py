@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 import dj_database_url
 
 load_dotenv()
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,9 +27,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
+DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost 127.0.0.1 [::1]').split()
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'sweetcake-store.onrender.com',  # tu dominio de producción
+]
 
 
 # Application definition
@@ -134,56 +138,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'webPages/static'),
+    os.path.join(BASE_DIR, "webPages/static"),
 ]
 
 # Configuración de Whitenoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-USE_S3 = os.getenv("USE_S3", "False").lower() == "true"
-
-if USE_S3:
-    AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
-    AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
-    AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
-    AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
-    AWS_S3_OBJECT_PARAMETERS = {
-        "CacheControl": "max-age=86400",
-    }
-    # s3 static settings
-    AWS_LOCATION = "static"
-    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
-    STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-
-USE_SES = os.getenv("USE_SES", "False").lower() == "true"
-
-if USE_SES:
-
-    # EMAIL_HOST = 'email-smtp.eu-west-3.amazonaws.com'
-    # EMAIL_PORT = 587
-    # EMAIL_USE_TLS = True
-    # EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-    # EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-    # DEFAULT_FROM_EMAIL = 'bzzmn@proton.me'
-
-    EMAIL_BACKEND = "django_ses.SESBackend"
-    AWS_SES_ACCESS_KEY_ID = os.getenv("EMAIL_HOST_USER")
-    AWS_SES_SECRET_ACCESS_KEY = os.getenv("EMAIL_HOST_PASSWORD")
-    AWS_SES_REGION_NAME = "sa-east-1"
-    AWS_SES_REGION_ENDPOINT = "email.sa-east-1.amazonaws.com"
-    # USE_SES_V2 = True
-
-else:
-    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
-DEFAULT_FROM_EMAIL = "bzzmn@proton.me"
-# SERVER_EMAIL = 'bzzmn@proton.me'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 

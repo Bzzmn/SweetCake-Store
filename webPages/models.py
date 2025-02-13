@@ -6,8 +6,8 @@ from django.urls import reverse
 from slugify import slugify
 
 
-
 # Create your models here.
+
 
 # MODELO ABSTRACTO PRODUCTOS
 class Product(models.Model):
