@@ -21,12 +21,14 @@ COPY . .
 ARG DJANGO_SECRET_KEY="dummy-key-for-build"
 ARG DATABASE_URL="sqlite:///db.sqlite3"
 ARG PORT=8000
+ARG DJANGO_ALLOWED_HOSTS="localhost 127.0.0.1 [::1]"
 
 # Set environment variables for build time
 ENV DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
 ENV DATABASE_URL=${DATABASE_URL}
 ENV DJANGO_DEBUG=False
 ENV PORT=${PORT}
+ENV DJANGO_ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
 
 # Collect static files
 RUN python manage.py collectstatic --noinput
