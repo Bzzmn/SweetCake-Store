@@ -21,7 +21,7 @@ COPY . .
 RUN python manage.py collectstatic --noinput
 
 # Expose port
-EXPOSE 8000
+EXPOSE 80
 
 # Set environment variables
 ENV DJANGO_SETTINGS_MODULE=sweetcake.settings
@@ -30,4 +30,4 @@ ENV DJANGO_DEBUG=False
 ENV USE_SES=False
 
 # Run migrations and then start Gunicorn
-CMD ["sh", "-c", "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 sweetcake.wsgi:application"]
+CMD ["sh", "-c", "python manage.py migrate && gunicorn --bind 0.0.0.0:80 sweetcake.wsgi:application"]
