@@ -21,7 +21,7 @@ COPY . .
 RUN python manage.py collectstatic --noinput
 
 # Expose port
-EXPOSE 8001
+EXPOSE 8000
 
 # Set environment variables
 ENV DJANGO_SETTINGS_MODULE=sweetcake.settings
